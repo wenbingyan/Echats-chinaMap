@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+<head>
+    <meta charset="utf-8">
+    <script src="echarts.min.js"></script>
+    <script src="china.js"></script> 
+</head>
+<body style="height:100%;">
+    <div id="main" style="width:100%;height:100%;"></div>
+    <script>
+	function randomData() {
+		return Math.round(Math.random()*500);
+	}
+ 
+	var mydata = [
+		{name: '北京',value: 0 },{name: '天津',value: 1 },
+		{name: '上海',value: 2 },{name: '重庆',value: 4 },
+		{name: '河北',value: 3 },{name: '河南',value: randomData() },
+		{name: '云南',value: randomData() },{name: '辽宁',value: randomData() },
+		{name: '黑龙江',value: randomData() },{name: '湖南',value: randomData() },
+		{name: '安徽',value: randomData() },{name: '山东',value: randomData() },
+		{name: '新疆',value: randomData() },{name: '江苏',value: randomData() },
+		{name: '浙江',value: randomData() },{name: '江西',value: randomData() },
+		{name: '湖北',value: randomData() },{name: '广西',value: randomData() },
+		{name: '甘肃',value: randomData() },{name: '山西',value: randomData() },
+		{name: '内蒙古',value: randomData() },{name: '陕西',value: randomData() },
+		{name: '吉林',value: randomData() },{name: '福建',value: randomData() },
+		{name: '贵州',value: randomData() },{name: '广东',value: randomData() },
+		{name: '青海',value: randomData() },{name: '西藏',value: randomData() },
+		{name: '四川',value: randomData() },{name: '宁夏',value: randomData() },
+		{name: '海南',value: randomData() },{name: '台湾',value: randomData() },
+		{name: '香港',value: randomData() },{name: '澳门',value: randomData() }
+	];
+ 
+	var option = {
+		backgroundColor: '#FFFFFF',
+		tooltip : {
+			trigger: 'item',
+			formatter: '{b}'
+			// formatter: function (params) {
+            //     return params.data.name + '<br/>' + params.data.test
+            // }
+		},
+		visualMap: {  
+			show : true,  
+			x: 'right',  
+			y: 'center',  
+			splitList: [   
+				{start: 1, end:2 ,label: 'aaa'},
+				{start: 2, end:3 ,label: 'bbb'},
+				{start: 3, end:4 ,label: 'ccc'}
+			],  
+			color: ['#5475f5', '#9feaa5', '#85daef','#74e2ca', '#e6ac53', '#9fb5ea']  
+		},
+		series: [{
+			name: '全国地图',
+			type: 'map',
+			mapType: 'china', 
+			label: {
+				normal: {
+					show: true
+				},
+				emphasis: {
+					show: false
+				}
+			},
+			data:mydata
+		}]
+	};
+	var chart = echarts.init(document.getElementById('main'));
+    chart.setOption(option);
+    </script>
+</body>
+</html>
